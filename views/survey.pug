@@ -1,17 +1,17 @@
 include layouts/mainLayout
 
 .container
-.row
-    .col-md-8.offset-md-2.border.border-dark.p-3
-        span(style='font-size: 2rem')  Interest Survey
-        br
-        form(action='/submitSurvey' method='post')
-            each qu in questions
-                .form-group.row.p-2
-                    label.col-md-8(for=qu.id) #{qu.q}
-                    select.col-md-3(type='text', name=qu.id)
-                        option(value='0' selected='selected') A little
-                        option(value='1') Sometimes
-                        option(value='2') As much as possible
-            .text-center.p-1
-                button.btn.btn-primary(type='submit') Submit
+    .row
+        .col-md-8.offset-md-2.border.border-dark.p-3
+            span(style='font-size: 2rem')  #{title}
+            br
+            form(action='/submitSurvey' method='post')
+                each qu in questions
+                    .form-group.row.p-2
+                        label.col-md-8(for=qu.id) #{qu.q}
+                        select.col-md-3(type='text', name=qu.id)
+                            option(value='0' selected='selected') A little
+                            option(value='1') Sometimes
+                            option(value='2') As much as possible
+                .text-center.p-1
+                    button.btn.btn-primary(type='submit') Submit

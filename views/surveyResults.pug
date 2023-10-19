@@ -1,19 +1,31 @@
 include layouts/mainLayout
+
 .container
-    h1.mt-3
-    div.mt-3
-        h1 Add New Book
-        p
-            | Add a new Book into our inventory
-    div.mt-2
-        form(action='/product' method='post')
-            .form-group
-                label(for='titleId') Title
-                input.form-control(type='text' aria-describedby='emailHelp' id='titleId' name='title' placeholder='Enter title')
-            .form-group
-              label(for='authorId') Author
-              input.form-control(type='text' aria-describedby='emailHelp' id='authorId' name='author')
-            .form-group
-                label(for='priceId') Price
-                input.form-control(type='text' aria-describedby='emailHelp' id='priceId' name='price')
-            button.btn.btn-primary(type='submit') Submit
+    .row
+        .col-md-8.offset-md-2.border.border-dark.p-3
+            span(style='font-size: 2rem')  #{title}
+            br
+            table.table.table-bordered.border-dark
+                thead
+                    tr
+                        th(scope='col') Personality Type
+                        th(scope='col') Total Points
+                        th(scope='col') Percent
+                        th(scope='col') Description
+                tbody
+                    each c in categories
+                        tr
+                            if((cats[c.catId]/maxpts).toFixed(2)*100 < 50)
+                                - backgroundColor = '#FFAA33'
+                            if((cats[c.catId] / maxpts).toFixed(2) * 100 >= 50)
+                                - backgroundColor = 'yellow'
+                            if((cats[c.catId]/maxpts).toFixed(2)*100 >= 75)
+                                - backgroundColor = 'greenyellow'
+
+                            td(style='background-color:'+backgroundColor)= c.cat
+                            td(style='background-color:'+backgroundColor)= cats[c.catId]
+                            td(style='background-color:'+backgroundColor)= (cats[c.catId] / maxpts).toFixed(2) * 100 + "%"
+                            td(style='background-color:white;')= c.desc
+
+            form(method='get' action='/survey')
+                button( type='submit' class='btn btn-primary') Retake Survey

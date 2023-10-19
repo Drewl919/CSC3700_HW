@@ -19,6 +19,7 @@ let questions = [
 exports.getSurvey = ( req, res, next) => {
     res.render( 'survey', {
             from: 'survey',
+            title: "Interest Survey",
             questions: questions
         })
 }
@@ -38,5 +39,21 @@ exports.submitSurvey = ( req, res, next) => {
     for (i in data) {
         results.push(data[i]);
     }
-    console.log(results);
+    let cats = [];
+    for(c in categories) {
+        cats.push(0);
+    }
+    for(let i=0; i<results.length; i++) {
+        if ((cats[questions[i].cat] + parseInt(results[i])) <= MAX_PTS) {
+            cats[questions[i].cat] += parseInt((results[i]));
+        }
+    }
+    res.render('surveyResults', {
+        from: 'surveyResults',
+        title: "Interest Survey Results",
+        categories: categories,
+        cats: cats,
+        maxpts: MAX_PTS
+    })
+
 }

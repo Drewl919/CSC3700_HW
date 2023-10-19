@@ -16,7 +16,7 @@ app.get('*', function(req, res){
     res.render( 'notFound');
 })
 
-let port = 3002;
+let port = 8000;
 const server = http.createServer(app);
 server.listen( port );
 console.log( `Listening on http://localhost:${port}`);
