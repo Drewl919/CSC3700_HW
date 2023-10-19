@@ -6,59 +6,12 @@ include layouts/mainLayout
         span(style='font-size: 2rem')  Interest Survey
         br
         form(action='/submitSurvey' method='post')
-            .form-group.row.p-2
-                label.col-md-8(for='q1') Are you naturally observant?
-                select#q1.col-md-3(type='text', name='q1')
-                    option(value='0' selected='selected') A little
-                    option(value='1') Sometimes
-                    option(value='2') As much as possible
-            .form-group.row.p-2
-                label.col-md-8(for='q2') Do yyou like to work puzzles?
-                select#q2.col-md-3(type='text', name='q2')
-                    option(value='0' selected='selected') A little
-                    option(value='1') Sometimes
-                    option(value='2') As much as possible
-            .form-group.row.p-2
-                label.col-md-8(for='q3') Is authenticity important to you?
-                select#q3.col-md-3(type='text', name='q3')
-                    option(value='0' selected='selected') A little
-                    option(value='1') Sometimes
-                    option(value='2') As much as possible
-            .form-group.row.p-2
-                label.col-md-8(for='q4') Do you use personal values to make decisions?
-                select#q4.col-md-3(type='text', name='q4')
-                    option(value='0' selected='selected') A little
-                    option(value='1') Sometimes
-                    option(value='2') As much as possible
-            .form-group.row.p-2
-                label.col-md-8(for='q5') Do you find it easy to trust your gut instinct?
-                select#q5.col-md-3(type='text', name='q5')
-                    option(value='0' selected='selected') A little
-                    option(value='1') Sometimes
-                    option(value='2') As much as possible
-            .form-group.row.p-2
-                label.col-md-8(for='q6') Do you know how things work?
-                select#q6.col-md-3(type='text', name='q6')
-                    option(value='0' selected='selected') A little
-                    option(value='1') Sometimes
-                    option(value='2') As much as possible
-            .form-group.row.p-2
-                label.col-md-8(for='q7') Are you a good judge of character?
-                select#q7.col-md-3(type='text', name='q7')
-                    option(value='0' selected='selected') A little
-                    option(value='1') Sometimes
-                    option(value='2') As much as possible
-            .form-group.row.p-2
-                label.col-md-8(for='q8') Do you think you are naturally curious?
-                select#q8.col-md-3(type='text', name='q8')
-                    option(value='0' selected='selected') A little
-                    option(value='1') Sometimes
-                    option(value='2') As much as possible
-            .form-group.row.p-2
-                label.col-md-8(for='q9') Are you a good judge of character?
-                select#q9.col-md-3(type='text', name='q9')
-                    option(value='0' selected='selected') A little
-                    option(value='1') Sometimes
-                    option(value='2') As much as possible
+            each qu in questions
+                .form-group.row.p-2
+                    label.col-md-8(for=qu.id) #{qu.q}
+                    select.col-md-3(type='text', name=qu.id)
+                        option(value='0' selected='selected') A little
+                        option(value='1') Sometimes
+                        option(value='2') As much as possible
             .text-center.p-1
                 button.btn.btn-primary(type='submit') Submit

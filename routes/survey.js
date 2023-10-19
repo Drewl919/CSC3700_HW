@@ -6,5 +6,6 @@ const surveyController = require("../controllers/survey")
 router.get( '/survey', surveyController.getSurvey);
 router.post('/submitSurvey', surveyController.submitSurvey)
 router.get( '/about', surveyController.getAbout);
+router.get( '/', surveyController.getNotFound);
 
 exports.routes = router;
